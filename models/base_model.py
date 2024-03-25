@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 class BaseModel:
+    """A base class for all hbnb models"""
     def __init__(self):
         """ Instantiation of each object created """
         self.id = str(uuid4())
