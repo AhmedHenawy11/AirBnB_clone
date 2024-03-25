@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 class BaseModel:
-    """A base class for all hbnb models"""
+    """A base class for all  models"""
     def __init__(self):
         """ Instantiation of each object created """
         self.id = str(uuid4())
@@ -14,8 +14,7 @@ class BaseModel:
 
     def __str__(self):
         """ Representational method of the instance """
-        cls = (str(type(self)).split('.')[-1]).split('\'')[0]
-        return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
+        return f"[{type(self).__name__}] ({self.id}) <{self.__dict__}>"
 
     def save(self):
         """ Method that updates the public instance attribute updated_at with the current datetime """
