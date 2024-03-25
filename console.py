@@ -4,6 +4,8 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
+    """ CMD Class """
+
     prompt = "(hbnb) "
 
     def do_quit(self, arg):
