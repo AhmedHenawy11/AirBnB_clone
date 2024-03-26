@@ -46,6 +46,3 @@ class BaseModel:
         dict['updated_at'] = self.updated_at.isoformat()
         return dict
 
-new = BaseModel({"name":"Ahmed", "age":"22"})
-
-new.save()

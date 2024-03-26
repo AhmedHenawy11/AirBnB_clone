@@ -3,7 +3,6 @@
 import json
 
 
-
 class FileStorage:
     """ This is a storage engine for AirBnB clone project
     Class Methods:
