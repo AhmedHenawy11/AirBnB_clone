@@ -2,7 +2,7 @@
 """This module defines a base class to be inherited for all models in our project"""
 from uuid import uuid4
 from datetime import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -27,7 +27,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """ Representational method of the instance """
@@ -36,7 +36,7 @@ class BaseModel:
     def save(self):
         """ Method that updates the public instance attribute updated_at with the current datetime """
         self.updated_at = datetime.now()
-        storage.save(self)
+        models.storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__ of the instance """
@@ -46,3 +46,6 @@ class BaseModel:
         dict['updated_at'] = self.updated_at.isoformat()
         return dict
 
+new = BaseModel({"name":"Ahmed", "age":"22"})
+
+new.save()

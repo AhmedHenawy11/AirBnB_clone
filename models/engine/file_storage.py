@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ a class FileStorage that serializes instances to a JSON file and deserializes JSON file to instances """
 import json
-from models.base_model import BaseModel
+
 
 
 class FileStorage:
@@ -48,5 +48,4 @@ class FileStorage:
                 self.__objects[key] = obj
         except FileNotFoundError:
             pass
-
 
