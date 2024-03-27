@@ -3,7 +3,6 @@
 import json
 
 
-
 class FileStorage:
     """ This is a storage engine for AirBnB clone project
     Class Methods:
@@ -31,21 +30,23 @@ class FileStorage:
 
     def save(self):
         """Saves storage dictionary to file"""
-        dict = {}
-        dict.update(FileStorage.__objects)
-        for key, object in dict.items():
-            dict[key] = object.to_dict()
-        with open(FileStorage.__file_path, 'w') as file:
-            json.dump(dict, file)
+        with open(FileStorage.__file_path, 'w') as f:
+            temp = {}
+            temp.update(FileStorage.__objects)
+            for key, val in temp.items():
+                temp[key] = val.to_dict()
+            json.dump(temp, f)
 
     def reload(self):
         from models.base_model import BaseModel
-        """Deserialize/convert obj dicts back to instances, if it exists"""
+        """ Reload stored objects """
+        classes = {'BaseModel': BaseModel,}
         try:
-            with open(self.__file_path, 'r', encoding="UTF-8") as f:
-                new_obj_dict = json.load(f)
-            for key, value in new_obj_dict.items():
-                self.__objects[key] = value
+            with open(FileStorage.__file_path, 'r') as file:
+                data = {}
+                data = json.load(file)
+                for key, value in data.items():
+                    self.all()[key] = classes[value['__class__']](**value)
+
         except FileNotFoundError:
             pass
-

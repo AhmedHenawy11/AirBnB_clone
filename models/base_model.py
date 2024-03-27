@@ -4,7 +4,6 @@ from uuid import uuid4
 from datetime import datetime
 
 
-
 class BaseModel:
     """A base class for all  models"""
 
@@ -32,7 +31,7 @@ class BaseModel:
 
     def __str__(self):
         """ Representational method of the instance """
-        return f"[{type(self).__name__}] ({self.id}) <{self.__dict__}>"
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         from models import storage
