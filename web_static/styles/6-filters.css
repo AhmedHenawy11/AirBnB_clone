@@ -56,6 +56,7 @@ section.filters {
     border-radius: 4px;
     width: 84%;
     display: none;
+    z-index: 1;
 }
 .popover li{
     margin-left: 25px;

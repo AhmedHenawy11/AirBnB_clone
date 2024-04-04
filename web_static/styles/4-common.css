@@ -1,7 +1,6 @@
 body{
     margin: 0;
     padding: 0;
-    color: #484848;
     display: flex;
     flex-direction: column;
     font-size: 14px;
