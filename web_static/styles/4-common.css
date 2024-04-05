@@ -5,6 +5,7 @@ body{
     flex-direction: column;
     font-size: 14px;
     font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    position: relative;
 }
 .container{
     width: 100%;
