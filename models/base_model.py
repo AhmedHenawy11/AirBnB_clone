@@ -18,7 +18,7 @@ class BaseModel:
                 elif "updated_at" == key:
                     self.updated_at = datetime.strptime(kwargs["updated_at"],
                                                         date_format)
-                elif key == "__class__":
+                elif "__class__" == key:
                     pass
                 else:
                     setattr(self, key, value)
