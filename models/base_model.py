@@ -25,7 +25,7 @@ class BaseModel:
         else:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-        self.id = str(uuid4())
+            self.id = str(uuid4())
 
     def __str__(self):
         """ Representational method of the instance """
