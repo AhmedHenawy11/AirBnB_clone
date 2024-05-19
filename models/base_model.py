@@ -26,6 +26,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         self.id = str(uuid4())
+
     def __str__(self):
         """ Representational method of the instance """
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
