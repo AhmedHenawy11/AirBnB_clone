@@ -10,6 +10,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """ Instantiation of each object created """
         date_format = '%Y-%m-%dT%H:%M:%S.%f'
+        self.id = None
         if kwargs:
             for key, value in kwargs.items():
                 if "created_at" == key:
@@ -25,7 +26,11 @@ class BaseModel:
         else:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+
+        if self.id is None:
             self.id = str(uuid4())
+        else:
+            pass
 
     def __str__(self):
         """ Representational method of the instance """
