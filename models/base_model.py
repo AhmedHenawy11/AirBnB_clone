@@ -41,4 +41,6 @@ class BaseModel:
         dicto.update({'__class__': type(self).__name__})
         dicto['created_at'] = datetime.isoformat()
         dicto['updated_at'] = datetime.isoformat()
+
         return dicto
+
