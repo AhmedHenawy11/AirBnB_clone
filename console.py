@@ -25,6 +25,9 @@ class HBNBCommand(cmd.Cmd):
         """ Prints the help documentation for EOF """
         print("Exits the program without formatting\n")
 
+    def emptyline(self):
+        """ Overrides the emptyline method of CMD """
+        pass
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
