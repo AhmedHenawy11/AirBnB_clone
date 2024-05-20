@@ -23,11 +23,9 @@ class BaseModel:
                 else:
                     setattr(self, key, value)
         else:
-            from models import storage
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
 
     def __str__(self):
         """ Representational method of the instance """
@@ -35,13 +33,12 @@ class BaseModel:
 
     def save(self):
         """ Stores the instance into json file """
-        from models import storage
         self.updated_at = datetime.now()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__ of the instance """
         dicto = self.__dict__
         dicto.update({'__class__': type(self).__name__})
-        dicto['created_at'] = self.created_at.isoformat()
-        dicto['updated_at'] = self.updated_at.isoformat()
+        dicto['created_at'] = datetime.isoformat()
+        dicto['updated_at'] = datetime.isoformat()
         return dicto
