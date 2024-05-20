@@ -10,7 +10,6 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """ Instantiation of each object created """
         date_format = '%Y-%m-%dT%H:%M:%S.%f'
-        self.id = None
         if kwargs:
             for key, value in kwargs.items():
                 if "created_at" == key:
@@ -24,25 +23,25 @@ class BaseModel:
                 else:
                     setattr(self, key, value)
         else:
+            from models import storage
+            self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
-        if self.id is None:
-            self.id = str(uuid4())
-        else:
-            pass
+            storage.new(self)
 
     def __str__(self):
         """ Representational method of the instance """
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
+        from models import storage
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__ of the instance """
-        dictionary = self.__dict__
-        dictionary.update({"__class__": type(self).__name__})
-        dictionary['created_at'] = self.created_at.isoformat()
-        dictionary['updated_at'] = self.updated_at.isoformat()
-        return dictionary
+        dict = self.__dict__
+        dict.update({'__class__': type(self).__name__})
+        dict['created_at'] = self.created_at.isoformat()
+        dict['updated_at'] = self.updated_at.isoformat()
+        return dict
