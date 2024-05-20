@@ -34,6 +34,7 @@ class BaseModel:
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
+        """ Stores the instance into json file """
         from models import storage
         self.updated_at = datetime.now()
         storage.save()
